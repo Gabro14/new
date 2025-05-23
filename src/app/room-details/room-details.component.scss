@@ -1,0 +1,113 @@
+.room-details-container {
+  display: flex;
+  gap: 3rem;
+  padding: 2rem;
+  background: #f9f9f9;
+  min-height: 80vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  .left {
+    flex: 1.2;
+
+    .card {
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      background: white;
+      padding: 1.5rem;
+
+      .card-title {
+        font-size: 2rem;
+        color: #2c3e50;
+        margin-bottom: 0.8rem;
+      }
+
+      .card-text {
+        font-size: 1.1rem;
+        color: #555;
+        margin-bottom: 0.4rem;
+      }
+    }
+
+    .imgParent {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+
+      .room-image {
+        width: 120px;
+        height: 90px;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.1);
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .right {
+    flex: 0.8;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+
+    .booking-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.3rem;
+
+      label {
+        display: flex;
+        flex-direction: column;
+        font-weight: 600;
+        color: #34495e;
+        font-size: 1rem;
+
+        input {
+          margin-top: 0.4rem;
+          padding: 0.6rem 0.8rem;
+          border: 1.5px solid #ccc;
+          border-radius: 8px;
+          font-size: 1rem;
+          transition: border-color 0.3s ease;
+
+          &:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 8px rgba(52, 152, 219, 0.4);
+          }
+        }
+      }
+
+      .btn-book {
+        background-color: #e67e22;
+        color: white;
+        padding: 0.75rem;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 700;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #cf711c;
+        }
+      }
+    }
+  }
+}
+
+.status-text {
+  text-align: center;
+  font-weight: 600;
+  color: #7f8c8d;
+  margin: 1rem 0;
+  font-size: 1.1rem;
+}

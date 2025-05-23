@@ -1,0 +1,53 @@
+<p class="status-text">room-details works!</p>
+
+<main class="room-details-container">
+  <section class="left">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title">{{ singleRoom.name }}</h2>
+        <p class="card-text"><strong>Price Per Night:</strong> {{ singleRoom.pricePerNight | currency }}</p>
+        <p class="card-text"><strong>Max Guests:</strong> {{ singleRoom.maximumGuests }}</p>
+      </div>
+    </div>
+
+    <div class="imgParent">
+      <img 
+        *ngFor="let img of singleRoom.images" 
+        [src]="img.source" 
+        alt="Room Image" 
+        class="room-image"
+      />
+    </div>
+  </section>
+
+  <section class="right">
+    <form (ngSubmit)="book()" class="booking-form">
+      <label>
+        Check-In Date:
+        <input type="date" [(ngModel)]="checkInDate" name="checkInDate" required />
+      </label>
+
+      <label>
+        Check-Out Date:
+        <input type="date" [(ngModel)]="checkOutDate" name="checkOutDate" required />
+      </label>
+
+      <label>
+        Customer Name:
+        <input type="text" [(ngModel)]="customerName" name="customerName" placeholder="Your full name" required />
+      </label>
+
+      <label>
+        Customer ID:
+        <input type="text" [(ngModel)]="customerId" name="customerId" placeholder="ID / Passport number" required />
+      </label>
+
+      <label>
+        Customer Phone:
+        <input type="text" [(ngModel)]="customerPhone" name="customerPhone" placeholder="+995 5XX XX XX XX" required />
+      </label>
+
+      <button type="submit" class="btn-book">Book Now</button>
+    </form>
+  </section>
+</main>
