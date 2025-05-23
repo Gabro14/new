@@ -1,98 +1,92 @@
-// ფონური სტილი მთელ გვერდზე
 :host {
-  display: block;
-  padding: 2rem;
-  background: linear-gradient(135deg, #e0f7fa, #ffffff);
-  min-height: 100vh;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --card-bg: #fff;
+  --text-color: #212529;
+  --secondary-text: #6c757d;
+  --price-color: #198754;
+  --card-border: #dee2e6;
+
+  @media (prefers-color-scheme: dark) {
+    --card-bg: #1e1e1e;
+    --text-color: #f8f9fa;
+    --secondary-text: #adb5bd;
+    --price-color: #20c997;
+    --card-border: #2c2f33;
+  }
 }
 
-// ბარათების საერთო სტილი
 .card {
-  background-color: white;
-  border-radius: 16px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--card-border);
+  border-radius: 0.75rem;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin-left: 100px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
   }
 
   .card-img-top {
-    height: 180px;
+    width: 100%;
+    height: 200px;
     object-fit: cover;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
   }
 
   .card-body {
-    padding: 1.2rem;
+    padding: 1rem;
 
     .card-title {
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: #004d40;
-      margin-bottom: 0.5rem;
+      font-size: 1.25rem;
+      font-weight: bold;
     }
 
     .card-text {
-      font-size: 1rem;
-      color: #555;
-      line-height: 1.5;
+      color: var(--secondary-text);
     }
 
-    button {
-      margin-top: 12px;
-      background-color: #00acc1;
-      color: white;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
+    .price {
+      font-size: 1.1rem;
+      color: var(--price-color);
+      font-weight: 600;
+    }
+  }
 
-      &:hover {
-        background-color: #00838f;
-      }
+  button {
+    width: calc(100% - 2rem);
+    margin: 0 1rem 1rem;
+    padding: 0.5rem;
+    background-color: #0d6efd;
+    border: none;
+    color: #fff;
+    border-radius: 0.375rem;
+    font-weight: 600;
+
+    &:hover {
+      background-color: #0b5ed7;
     }
   }
 }
 
-// ბარათების კონტეინერი (roopParent)
+.main-hotel {
+  margin: 2rem auto;
+  max-width: 600px;
+}
+
 .roopParent {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  justify-content: center;
-  margin-top: 2rem;
+  display: grid;
+  gap: 2rem;
+  padding: 2rem;
 
-  .card {
-    width: 280px;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
   }
 
-  .imgParent {
-    width: 100%;
-
-    img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-  }
-}
-
-// Responsive design
-@media (max-width: 768px) {
-  .roopParent {
-    flex-direction: column;
-    align-items: center;
+  @media (min-width: 769px) and (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .card {
-    width: 90%;
+  @media (min-width: 1201px) {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
