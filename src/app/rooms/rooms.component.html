@@ -1,0 +1,33 @@
+<div class="filter-container">
+  <select [(ngModel)]="roomtypeid">
+    <option *ngFor="let el of roomTypes" [value]="el.id">{{ el.name }}</option>
+  </select>
+
+  <input type="number" [(ngModel)]="priceFrom" placeholder="Min Price" />
+  <input type="number" [(ngModel)]="priceTo" placeholder="Max Price" />
+  <input type="number" [(ngModel)]="maximumGuests" placeholder="Max Guests" />
+  <input type="date" [(ngModel)]="checkIn" placeholder="Check In" />
+  <input type="date" [(ngModel)]="checkOut" placeholder="Check Out" />
+
+  <div class="buttons">
+    <button (click)="filter()">Filter</button>
+    <button (click)="reset()">Reset</button>
+  </div>
+</div>
+
+
+
+<div class="room-container">
+  <div class="card" *ngFor="let rooms of roomss">
+    <img [src]="rooms.images[0]?.source" class="card-img-top" alt="Room Image" />
+    <div class="card-body">
+      <h5 class="card-title">{{ rooms.name }}</h5>
+      <p class="card-text">ტევადობა: {{ rooms.maximumGuests }} ადამიანი</p>
+      <p class="card-text price">{{ rooms.pricePerNight }}₾ / ღამე</p>
+    </div>
+    <button class="btn btn-primary w-100" routerLink="/roomDetails/{{ rooms.id }}">
+      დეტალები
+    </button>
+  </div>
+</div>
+

@@ -5,6 +5,7 @@ import { DetailsComponent } from './details/details.component';
 import { RoomDetailsComponent } from './room-details/room-details.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { RoomsComponent } from './rooms/rooms.component';
 
 export const routes: Routes = [
 
@@ -14,8 +15,10 @@ export const routes: Routes = [
     {path: "roomDetails/:id", component: RoomDetailsComponent},
     {path: "register", component: RegisterComponent},
     {path: "login", component: LoginComponent},
+    {path: "rooms", component:RoomsComponent},
+    {path: "rooms/:id", component: RoomDetailsComponent},
     {path: "**", component: ErrorComponent}
-
+    
 
 
 ];

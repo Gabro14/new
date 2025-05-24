@@ -5,11 +5,25 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ApiService {
-  filterRoom(arg0: { priceFrom: number; priceTo: number; maximumGuests: number; checkIn: Date; checkOut: Date; }) {
-    throw new Error('Method not implemented.');
-  }
+  
+  
+  
+
 
   constructor(private http : HttpClient) { }
+  private baseUrl = 'https://hotelbooking.stepprojects.ge/api/Booking';
+
+  filterRoom(postObj : any){
+    return this.http.post('https://hotelbooking.stepprojects.ge/api/Rooms/GetFiltered', postObj)
+  }
+  
+  roomss(){
+    return this.http.get('https://hotelbooking.stepprojects.ge/api/Rooms/GetAll')
+  }
+
+  getroomtypes(){
+    return this.http.get('https://hotelbooking.stepprojects.ge/api/Rooms/GetRoomTypes')
+  }
 
   getAll(){
         return this.http.get('https://hotelbooking.stepprojects.ge/api/Hotels/GetAll')
@@ -39,6 +53,15 @@ export class ApiService {
 
   registerUser(postObj : any){
     return this.http.post('https://rentcar.stepprojects.ge/api/Users/register', postObj)
+  }
+
+
+  getAllBookings() {
+    return this.http.get<any[]>(this.baseUrl);
+  }
+
+  deleteBooking(id: string) {
+    return this.http.delete(`${this.baseUrl}/${id}`);
   }
 
    logInUser(postObj : any){
