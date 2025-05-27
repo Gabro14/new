@@ -37,17 +37,46 @@ export class RoomDetailsComponent {
     customerPhone = ""
 
 
-    book(){
-        this.api.book({
-            roomID  : this.singleRoom.id,
-            checkInDate : this.checkInDate,
-            checkOutDate  : this.checkOutDate,
-            totalPrice : 100,
-            customerName : this.customerName,
-            customerId : this.customerId,
-            customerPhone :this.customerPhone,
-        }).subscribe(resp => console.log(resp))
+    // book(){
+    //     this.api.book({
+    //         roomID  : this.singleRoom.id,
+    //         checkInDate : this.checkInDate,
+    //         checkOutDate  : this.checkOutDate,
+    //         totalPrice : 100,
+    //         customerName : this.customerName,
+    //         customerId : this.customerId,
+    //         customerPhone :this.customerPhone,
+    //     }).subscribe(resp => console.log(resp))
+    // }
+
+    book() {
+  // თუ რომელიმე ველი ცარიელია, აჩვენე შეცდომის alert
+  if (!this.singleRoom?.id || !this.checkInDate || !this.checkOutDate || 
+      !this.customerName || !this.customerId || !this.customerPhone) {
+    alert('გთხოვთ შეავსოთ ყველა ველი!');
+    return;
+  }
+
+  this.api.book({
+    roomID: this.singleRoom.id,
+    checkInDate: this.checkInDate,
+    checkOutDate: this.checkOutDate,
+    totalPrice: 100,
+    customerName: this.customerName,
+    customerId: this.customerId,
+    customerPhone: this.customerPhone
+  }).subscribe({
+    next: (resp) => {
+      console.log(resp);
+      alert('დაჯავშნა წარმატებით შესრულდა!');
+    },
+    error: (err) => {
+      console.error(err);
+      alert('დაჯავშნისას მოხდა შეცდომა!');
     }
+  });
+}
+
   //         <!-- 
   // "checkInDate": "2025-05-17T12:40:49.812Z",
   // "checkOutDate": "2025-05-17T12:40:49.812Z",
